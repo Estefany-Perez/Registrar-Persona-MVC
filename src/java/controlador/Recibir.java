@@ -14,7 +14,6 @@ public class Recibir extends HttpServlet {
             throws ServletException, IOException {
         
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,7 +23,20 @@ public class Recibir extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String dui = request.getParameter("txtDui");
+        String apellidos=request.getParameter("txtApellidos");
+        String nombres =request.getParameter("txtNombres");
+        
+        Persona person=new Persona();
+        person.setDui(dui);
+        person.setApellidos(apellidos);
+        person.setNombres(nombres);
+        
+        if(person.insertarDatos()== true){
+            request.getRequestDispatcher("exito.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("noexito.jsp").forward(request, response);
+        }
     }
 
     @Override

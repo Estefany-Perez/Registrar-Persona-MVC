@@ -51,6 +51,22 @@ public class Persona {
        return false;   
     
     } 
+   
+     public ArrayList<Persona> consultarRegistros(){
+        ArrayList<Persona> persona = new ArrayList();
+        try {
+            String miQuery = "SELECT * FROM tb_persona";
+            state = cnn.createStatement(); 
+            result = state.executeQuery(miQuery); // ejecuta sentencia SQL
+            while(result.next()){
+                
+                persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"),result.getString("nombre_persona")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return persona;
+     }
    public String getDui(){
    
        return dui;

@@ -1,4 +1,5 @@
 package controlador;
+
 import modelo.Persona;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,39 +10,38 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Recibir extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+            throws ServletException, IOException{ 
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dui = request.getParameter("txtDui");
-        String apellidos=request.getParameter("txtApellidos");
-        String nombres =request.getParameter("txtNombres");
+        String apellidos = request.getParameter("txtApellidos");
+        String nombres = request.getParameter("txtNombres");
         
-        Persona person=new Persona();
+        Persona person = new Persona();//Al crear el objeto se conecta a la DB
         person.setDui(dui);
         person.setApellidos(apellidos);
         person.setNombres(nombres);
         
-        if(person.insertarDatos()== true){
+        if (person.insertarDatos() == true) {//recordemos que es booleana
             request.getRequestDispatcher("exito.jsp").forward(request, response);
         }else{
-            request.getRequestDispatcher("noexito.jsp").forward(request, response);
+        request.getRequestDispatcher("noexito.jsp").forward(request, response);
         }
+     
+    }
+    @Override
+    public String getServletInfo(){
+    return "Short description";
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

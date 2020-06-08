@@ -46,7 +46,7 @@
                        
                              
                  
-                     <td> <form action="editar.jsp" method="POST">
+                     <td> <form action="Editar_B.jsp" method="POST">
                                   
                                <center>    <button class="btn btn-primary" value="${listaTotal.dui}" name="Dui">Modificar</button>
                                   <input type="hidden" name="nombre" value="${listaTotal.nombres}"/>

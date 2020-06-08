@@ -69,8 +69,30 @@ public class Persona {
         }
         return person;
      }
-     
-  
+     public int editar_B() {
+        int condicion = 0;
+        String consulta = "update tb_persona set nombre_persona='" + this.nombres + "',apellido_persona='" + this.apellidos + "' where dui_persona ='" + this.dui + "';";
+        try {
+            state = cnn.createStatement();
+            condicion = state.executeUpdate(consulta);
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return condicion;
+    }
+     public boolean eliminarE(String dui)
+    {
+       try {
+            String miQuery = "delete from tb_persona where dui_persona='"+dui+"'";
+            state = cnn.createStatement();
+            state.executeUpdate(miQuery);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+
 
    public String getDui(){
    
@@ -98,4 +120,8 @@ public class Persona {
    
        this.nombres = nombres;
    }
+
+    public int Editar_B() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

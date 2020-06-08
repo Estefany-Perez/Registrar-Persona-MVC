@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>eliminar</servlet-name>
-        <servlet-class>controlador.eliminar</servlet-class>
+        <servlet-class>controlador.eliminarE</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Recibir</servlet-name>

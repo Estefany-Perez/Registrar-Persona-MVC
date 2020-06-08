@@ -12,12 +12,13 @@ public class Persona {
    String nombres;
    
    //Constructor vacio de la clase persona
-   
+   PreparedStatement ps;
    Connection cnn;
    Statement state;
    ResultSet result;
-   
-   public Persona(){
+    
+    public Persona(){
+    
        try {
            Class.forName("com.mysql.jdbc.Driver");//Driver de la base de datos
            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_recurso_humano?zeroDateTimeBehavior=convertToNull","root","");//url de la db, user, pass
@@ -27,16 +28,17 @@ public class Persona {
            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
        }
     }
+
    
-   public Persona(String dui, String apellido, String nombres){
+   public Persona(String dui, String apellidos, String nombres){
         this.dui = dui;
-        this.apellidos = apellido;
+        this.apellidos = apellidos;
         this.nombres = nombres;
     }
    public boolean insertarDatos(){
        try{
            String miQuery = "INSERT INTO tb_persona VALUES('" + dui + "', '" + apellidos + "', '"+ nombres + "');";
-           int estado = 0;
+          int estado = 0;
            state = cnn.createStatement();
            estado = state.executeUpdate(miQuery);
            if (estado == 1) {
@@ -53,20 +55,23 @@ public class Persona {
     } 
    
      public ArrayList<Persona> consultarRegistros(){
-        ArrayList<Persona> persona = new ArrayList();
+        ArrayList<Persona> person = new ArrayList();
         try {
-            String miQuery = "SELECT * FROM tb_persona";
+            String miQuery = "Select * from tb_persona";
             state = cnn.createStatement(); 
             result = state.executeQuery(miQuery); // ejecuta sentencia SQL
             while(result.next()){
                 
-                persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"),result.getString("nombre_persona")));
+                person.add(new Persona(result.getString("dui_persona"), result.getString("apellido_persona"),result.getString("nombre_persona")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,ex);
         }
-        return persona;
+        return person;
      }
+     
+  
+
    public String getDui(){
    
        return dui;

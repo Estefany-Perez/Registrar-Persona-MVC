@@ -22,6 +22,7 @@ public class Recibir extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+      
         String dui = request.getParameter("txtDui");
         String apellidos = request.getParameter("txtApellidos");
         String nombres = request.getParameter("txtNombres");
@@ -35,8 +36,11 @@ public class Recibir extends HttpServlet {
             request.getRequestDispatcher("exito.jsp").forward(request, response);
         }else{
         request.getRequestDispatcher("noexito.jsp").forward(request, response);
-        }
-     
+                }
+        
+        
+        
+   
     }
     @Override
     public String getServletInfo(){

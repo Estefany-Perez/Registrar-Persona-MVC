@@ -8,16 +8,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+      
     </head>
     <body>
-        <h1>Registro de Personas</h1>
-        <form action="recibir.do" method="POST">
-            DUI:<input type="text" name="txtDui" value="" />   <br>
-            Apellidos: <input type="text" name="txtApellidos" value="" /><br>
-            Nombres:<input type="text" name="txtNombres" value="" /><br>
-            <input type="submit" value="Registrar nueva Persona" /> <br> 
-        </form>
+    <center>
+         <div class="btn-group-vertical">
+             <div class="col-lg-12">
+                 
+                 <center><h1>Registro de Personas</h1> </center>
+            <form action="recibir.do" method="POST">
+           
+            DUI:<input  class="form-control" type="text" name="txtDui" value="" required/>   <br>
+            Apellidos: <input class="form-control" type="text" name="txtApellidos" value="" required /><br>
+            Nombres:<input class="form-control" type="text" name="txtNombres" value="" required /><br>
+            <input class="btn btn-primary"  type="submit" value="Registrar nueva Persona" /> <br> 
+                </form> 
+            </div>
+              </div>
        
+            </center>
+   
     </body>
 </html>

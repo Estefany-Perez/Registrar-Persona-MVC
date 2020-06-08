@@ -3,6 +3,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,11 @@ public class Mostrar extends HttpServlet {
         personas = p.consultarRegistros();
        request.getSession().setAttribute("personas", personas);//Asignar valores a la sesion
        request.getRequestDispatcher("mostrartodo.jsp").forward(request, response);
+    
+       
+       
     }
+  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
